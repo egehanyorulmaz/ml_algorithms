@@ -1,11 +1,6 @@
 import numpy as np
 import pandas as pd
-
-
-def euclidean_distance(X_1, X_2):
-    X_1 = np.array(X_1)
-    X_2 = np.array(X_2)
-    return np.sqrt(np.sum((X_1 - X_2) ** 2))
+from helpers.metrics import Distance
 
 
 def count_features(data):
@@ -40,7 +35,7 @@ while True:
     for idx1, point in enumerate(X):
         distance_to_centroid = np.zeros(N)
         for idx2, centroid in enumerate(C):
-            distance_to_centroid[idx2] = euclidean_distance(point, centroid)
+            distance_to_centroid[idx2] = Distance.euclidean_distance(point, centroid)
         assignment = np.argmin(distance_to_centroid)
         point_assignments[idx1] = assignment
 
